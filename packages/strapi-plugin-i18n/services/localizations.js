@@ -3,7 +3,7 @@
 const { pick, prop, isNil } = require('lodash/fp');
 
 const { getService } = require('../utils');
-const { getNonLocalizedFields } = require('./content-types');
+const { getNonLocalizedAttributes } = require('./content-types');
 
 /**
  * Adds the default locale to an object if it isn't defined yet
@@ -43,7 +43,7 @@ const syncLocalizations = async (entry, { model }) => {
  */
 const updateNonLocalizedFields = async (entry, { model }) => {
   if (Array.isArray(entry.localizations)) {
-    const nonLocalizedFields = getNonLocalizedFields(model);
+    const nonLocalizedFields = getNonLocalizedAttributes(model);
 
     if (nonLocalizedFields.length === 0) {
       return;
